@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/account">
+        <item
+            android:id="@+id/signOut"
+            android:icon="@drawable/ic_account_signout_grey_48dp"
+            android:title="@string/sign_out"/>
+    </group>
+
+    <group
+        android:id="@+id/nav"
+        android:checkableBehavior="single">
+
+        <item android:id="@+id/home"
+            android:icon="@drawable/ic_home_grey_48dp"
+            android:title="@string/main_fragment"
+            android:checked="true"/>
+        <item
+            android:id="@+id/edit"
+            android:icon="@drawable/ic_list_white_48dp"
+            android:title="@string/edit_fragment" />
+    </group>
+
+</menu>

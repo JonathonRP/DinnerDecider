@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/White"/>
+
+    <item
+        android:height="260dp"
+        android:width="260dp"
+        android:gravity="center"
+        android:drawable="@drawable/splash_shape"/>
+
+    <item
+        android:height="200dp"
+        android:width="200dp"
+        android:gravity="center"
+        android:drawable="@drawable/dinner_helper"/>
+
+</layer-list>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Dinner Decider</string>
+    <string name="main_fragment">Home</string>
+    <string name="edit_fragment">Edit</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="textview_placeholder">Food</string>
+    <string name="new_food">New Food?</string>
+    <string name="hint_txt">hint</string>
+    <string name="content_descript">DinnerPlate</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>
