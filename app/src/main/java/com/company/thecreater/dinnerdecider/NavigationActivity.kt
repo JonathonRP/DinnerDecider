@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.CheckBox
@@ -68,6 +69,7 @@ class NavigationActivity : AppCompatActivity(),
         } else {
             if (content.currentItem != 0) {
                 navigateToFragment(0)
+                nav_view.setCheckedItem(R.id.home)
             } else {
                 super.onBackPressed()
             }
