@@ -17,7 +17,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e57cd045-73bf-4e91-966a-67259c8c0a44" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/company/thecreater/dinnerdecider/NavigationActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/thecreater/dinnerdecider/NavigationActivity.kt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DinnerDecider/out/" />
@@ -2947,7 +2946,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529613450660</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updating the backpress">
+      <created>1529620241912</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1529620241912</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3054,7 +3060,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updating the recyclerview" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating the recyclerview" />
+    <MESSAGE value="updating the backpress" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating the backpress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
