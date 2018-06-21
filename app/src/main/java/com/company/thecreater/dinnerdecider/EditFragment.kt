@@ -21,15 +21,11 @@ class EditFragment : FragmentInteractionListener() {
         return inflater.inflate(R.layout.fragment_edit, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        editView.layoutManager = LinearLayoutManager(activity)
-        editView.adapter = EditViewAdapter()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        editView.layoutManager = LinearLayoutManager(context)
+        editView.adapter = EditViewAdapter()
 
         add.setOnClickListener {
             var visible = fragment.isShown
