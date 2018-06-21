@@ -4,7 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 
-class Alert(context: Context,
+class Alert(context: Context?,
             title: String,
             message: String,
             positiveMessage: String,

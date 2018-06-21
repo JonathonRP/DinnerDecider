@@ -11,9 +11,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.edit_view.view.*
 
 
-class EditViewAdapter : RecyclerView.Adapter<EditListViewHolder>() {
-
-    private lateinit var context : Context
+class EditViewAdapter(private var context: Context? = null) : RecyclerView.Adapter<EditListViewHolder>() {
 
     override fun getItemCount(): Int {
 
@@ -90,7 +88,7 @@ class EditViewAdapter : RecyclerView.Adapter<EditListViewHolder>() {
         }
     }
 
-    private fun updateItem(context: Context, foodId: String, food: String, position: Int) {
+    private fun updateItem(context: Context?, foodId: String, food: String, position: Int) {
 
         oldFood = foods.elementAt(position)
 
@@ -105,7 +103,7 @@ class EditViewAdapter : RecyclerView.Adapter<EditListViewHolder>() {
             }
         }
     }
-    private fun deleteItem(context: Context, foodId: String, food: String, position: Int) {
+    private fun deleteItem(context: Context?, foodId: String, food: String, position: Int) {
 
         Kitchen.delete(foodId).addOnCompleteListener { task ->
 

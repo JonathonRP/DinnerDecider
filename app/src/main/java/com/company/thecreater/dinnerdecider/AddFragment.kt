@@ -37,6 +37,8 @@ class AddFragment : FragmentInteractionListener() {
                         }
                     }
                 }
+
+                add_food.text.clear()
             }
         }
     }
