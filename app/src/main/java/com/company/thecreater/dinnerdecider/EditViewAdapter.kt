@@ -1,5 +1,6 @@
 package com.company.thecreater.dinnerdecider
 
+import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.support.v7.widget.RecyclerView
@@ -7,28 +8,30 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import kotlinx.android.synthetic.main.edit_view.view.*
+import kotlinx.android.synthetic.main.fragment_main.view.*
 
 
-class EditViewAdapter(private var context: Context? = null) : RecyclerView.Adapter<EditListViewHolder>() {
+class EditViewAdapter(private var context: Context? = null) : RecyclerView.Adapter<EditViewHolder>() {
 
     override fun getItemCount(): Int {
 
         return foods.count()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditViewHolder {
 
         val layoutInflater = LayoutInflater.from(parent.context)
         val cellForRow = layoutInflater.inflate(R.layout.edit_view, parent, false)
 
         context = parent.context
 
-        return EditListViewHolder(cellForRow)
+        return EditViewHolder(cellForRow)
     }
 
-    override fun onBindViewHolder(holder: EditListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EditViewHolder, position: Int) {
 
         val food = foods.elementAt(position).food
         val foodId = foods.elementAt(position).id
@@ -69,11 +72,14 @@ class EditViewAdapter(private var context: Context? = null) : RecyclerView.Adapt
 
                 if(newFood != "" &&
                         !(newFood.isEmpty()) &&
-                        !(foods.contains(Food(newFood)))) {
+                            !(foods.contains(Food(newFood)))) {
 
                     updateItem(context, foodId, newFood, position)
 
-                } else {
+                } else if (foods.contains(Food(newFood))) {
+                    holder.itemView.food_choice.clearFocus()
+
+                } else if(newFood == "" && newFood.isEmpty()) {
                     Alert(context,
                             "You are Deleting $newFood",
                             "Are you sure you want to delete $newFood",
@@ -119,4 +125,4 @@ class EditViewAdapter(private var context: Context? = null) : RecyclerView.Adapt
     }
 }
 
-class EditListViewHolder(view : View) : RecyclerView.ViewHolder(view)
+class EditViewHolder(view : View) : RecyclerView.ViewHolder(view)

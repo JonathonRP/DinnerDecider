@@ -3,29 +3,40 @@ package com.company.thecreater.dinnerdecider
 import android.content.Context
 import android.os.Bundle
 import android.support.transition.TransitionManager
+import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.*
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.Animation
-import android.view.animation.RotateAnimation
-import android.view.inputmethod.InputMethod
 import android.view.inputmethod.InputMethodManager
 import kotlinx.android.synthetic.main.fragment_edit.*
 
-class EditFragment : FragmentInteractionListener() {
+internal var EditAdapter: RecyclerView.Adapter<*> = EditViewAdapter()
+
+class EditFragment: FragmentInteractionListener() {
     private lateinit var listener: OnFragmentInteractionListener
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
+        showKeyboard(true)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edit, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        editView.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            adapter = EditAdapter
+            itemAnimator = DefaultItemAnimator()
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        editView.layoutManager = LinearLayoutManager(context)
-        editView.adapter = EditViewAdapter()
 
         add.setOnClickListener {
             var visible = fragment.isShown
@@ -46,5 +57,17 @@ class EditFragment : FragmentInteractionListener() {
         } else {
             throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+
+        showKeyboard(false)
+    }
+
+    private fun showKeyboard(show: Boolean) {
+        val inputManager = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        inputManager.hideSoftInputFromWindow(this.view?.windowToken, if (show) InputMethodManager.SHOW_FORCED else InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }
