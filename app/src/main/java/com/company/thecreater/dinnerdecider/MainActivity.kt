@@ -1,34 +1,28 @@
 package com.company.thecreater.dinnerdecider
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
-import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_navigation.*
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.coroutines.experimental.async
 
-class NavigationActivity : AppCompatActivity(),
-        NavigationView.OnNavigationItemSelectedListener,
-        FragmentInteractionListener.OnFragmentInteractionListener {
+class MainActivity : BaseActivity(),
+    NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_navigation)
+        setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
         val toggle = ActionBarDrawerToggle(
@@ -39,14 +33,6 @@ class NavigationActivity : AppCompatActivity(),
         nav_view.setNavigationItemSelectedListener(this)
 
         loadData(this)
-
-        val headerView = nav_view.getHeaderView(0)
-        headerView.findViewById<TextView>(R.id.title).text = auth.currentUser?.displayName
-        headerView.findViewById<TextView>(R.id.subtitle).text = auth.currentUser?.email
-
-        if (auth.currentUser?.photoUrl != null) {
-            headerView.findViewById<ImageView>(R.id.logo).setImageURI(auth.currentUser?.photoUrl)
-        }
 
         val fragmentSelect = FragmentStateAdaptor(supportFragmentManager)
         val contentProvider = content
@@ -59,7 +45,6 @@ class NavigationActivity : AppCompatActivity(),
 
         fragmentSelect.addFragment(MainFragment())
         fragmentSelect.addFragment(EditFragment())
-
         contentProvider.adapter = fragmentSelect
     }
 
@@ -95,14 +80,26 @@ class NavigationActivity : AppCompatActivity(),
         return true
     }
 
-    override fun onFragmentInteraction(uri: Uri) {
-
-    }
-
     override fun onResume() {
         super.onResume()
 
         Kitchen(this).attachAuthListener()
+
+        val headerView = nav_view.getHeaderView(0)
+
+        if (auth.currentUser != null) {
+
+            headerView.findViewById<TextView>(R.id.title).text = auth.currentUser?.displayName
+            headerView.findViewById<TextView>(R.id.subtitle).text = auth.currentUser?.email
+
+            if (auth.currentUser?.photoUrl != null) {
+                Picasso.with(this)
+                        .load(auth.currentUser?.photoUrl)
+                        .centerCrop()
+                        .into(logo)
+            }
+        }
+
         loadData(this)
     }
 
@@ -125,6 +122,6 @@ class NavigationActivity : AppCompatActivity(),
     }
 
     private fun navigateToFragment(fragment: Int) {
-        content.currentItem = fragment
+            content.currentItem = fragment
     }
 }

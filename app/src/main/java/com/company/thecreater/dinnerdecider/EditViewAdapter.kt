@@ -1,6 +1,5 @@
 package com.company.thecreater.dinnerdecider
 
-import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.support.v7.widget.RecyclerView
@@ -8,7 +7,6 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import kotlinx.android.synthetic.main.edit_view.view.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
@@ -16,10 +14,8 @@ import kotlinx.android.synthetic.main.fragment_main.view.*
 
 class EditViewAdapter(private var context: Context? = null) : RecyclerView.Adapter<EditViewHolder>() {
 
-    override fun getItemCount(): Int {
-
-        return foods.count()
-    }
+    override fun getItemCount(): Int
+            = foods.count()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditViewHolder {
 
