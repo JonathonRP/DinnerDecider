@@ -32,10 +32,10 @@ class EditViewAdapter(private var context: Context? = null) : RecyclerView.Adapt
         val food = foods.elementAt(position).food
         val foodId = foods.elementAt(position).id
 
-        holder.itemView?.item_title_layout?.hint = food
-        holder.itemView?.item_title?.setText(food)
+        holder.itemView.item_title_layout?.hint = food
+        holder.itemView.item_title?.setText(food)
 
-        holder.itemView?.item_title?.setOnFocusChangeListener { _, hasFocus ->
+        holder.itemView.item_title?.setOnFocusChangeListener { _, hasFocus ->
 
             if (!hasFocus) {
                 val newFood: String = holder.itemView.item_title?.text.toString().capitalize()
@@ -49,7 +49,7 @@ class EditViewAdapter(private var context: Context? = null) : RecyclerView.Adapt
             }
         }
 
-        holder.itemView?.delete?.setOnClickListener {
+        holder.itemView.delete?.setOnClickListener {
 
             Alert(context,
                     "You are Deleting $food",
@@ -60,7 +60,7 @@ class EditViewAdapter(private var context: Context? = null) : RecyclerView.Adapt
                     "No")
         }
 
-        holder.itemView?.item_title?.setOnKeyListener { _, keyCode, _ ->
+        holder.itemView.item_title?.setOnKeyListener { _, keyCode, _ ->
 
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
 

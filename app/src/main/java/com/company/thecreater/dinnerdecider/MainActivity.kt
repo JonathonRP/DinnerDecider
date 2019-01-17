@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.toolbar.*
-import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.*
 
 class MainActivity : BaseActivity(),
     NavigationView.OnNavigationItemSelectedListener {
@@ -83,7 +83,7 @@ class MainActivity : BaseActivity(),
     override fun onResume() {
         super.onResume()
 
-        Kitchen(this).attachAuthListener()
+        Kitchen(this@MainActivity).attachAuthListener()
 
         val headerView = nav_view.getHeaderView(0)
 
@@ -115,7 +115,7 @@ class MainActivity : BaseActivity(),
         Kitchen.stopListening()
     }
 
-    private fun loadData(context: Context) = async {
+    private fun loadData(context: Context) = GlobalScope.async {
         Kitchen.loadFoods().addOnFailureListener { e ->
             Toast.makeText(context, "$e", Toast.LENGTH_LONG).show()
         }

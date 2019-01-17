@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.*
 import java.util.*
 
 class MainFragment : FragmentInteractionListener() {
@@ -46,8 +46,7 @@ class MainFragment : FragmentInteractionListener() {
     }
 
     private fun searchFood(randomFood : Int) {
-
-        async {
+        GlobalScope.async {
             delay(1000)
 
             progressBar.visibility = View.INVISIBLE

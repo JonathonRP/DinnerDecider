@@ -43,7 +43,7 @@ class AddFragment : FragmentInteractionListener() {
                     }
                 }
 
-                add_food.text.clear()
+                add_food.text?.clear()
             }
         }
 
@@ -67,7 +67,7 @@ class AddFragment : FragmentInteractionListener() {
                 }
             }
 
-            add_food.text.clear()
+            add_food.text?.clear()
         }
     }
 
