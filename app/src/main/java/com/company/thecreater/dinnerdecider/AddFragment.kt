@@ -2,9 +2,11 @@ package com.company.thecreater.dinnerdecider
 
 import android.content.Context
 import android.os.Bundle
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_add.*
 
@@ -31,15 +33,41 @@ class AddFragment : FragmentInteractionListener() {
                     Kitchen.add(food).addOnCompleteListener { task ->
 
                         if (task.isSuccessful) {
+
+                            EditAdapter.notifyDataSetChanged()
                             Toast.makeText(context, "$food was added", Toast.LENGTH_LONG).show()
                         } else {
+
                             Toast.makeText(context, "$food was not added", Toast.LENGTH_LONG).show()
                         }
                     }
                 }
 
-                add_food.text.clear()
+                add_food.text?.clear()
             }
+        }
+
+        save.setOnClickListener {
+            val food: String = add_food.text.toString().capitalize()
+
+            if (food != "" &&
+                    !(food.isEmpty()) &&
+                    !(foods.contains(Food(food)))) {
+
+                Kitchen.add(food).addOnCompleteListener { task ->
+
+                    if (task.isSuccessful) {
+
+                        EditAdapter.notifyDataSetChanged()
+                        Toast.makeText(context, "$food was added", Toast.LENGTH_LONG).show()
+                    } else {
+
+                        Toast.makeText(context, "$food was not added", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+
+            add_food.text?.clear()
         }
     }
 

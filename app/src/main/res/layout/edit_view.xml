@@ -25,7 +25,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_txt"
             android:inputType="text|textCapWords"
-            android:selectAllOnFocus="false"
             android:singleLine="false" />
 
     </android.support.design.widget.TextInputLayout>
